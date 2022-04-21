@@ -30,20 +30,21 @@ public @Data class Trainer {
 	private Users user;
 	
 	@Column(unique=true)
-	@NotEmpty
+	@NotEmpty(message="704")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String name;
 	
-	@NotEmpty
+	@NotEmpty(message="705")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String technology;
-	@NotEmpty
+	@NotEmpty(message="706")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String location;
-	@NotEmpty
+	@NotEmpty(message="707")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String contact;
 	@Column(unique=true)
-	@Email(message="Enter Correct Email")
+	@NotEmpty(message="708")
+	@Email(message="553")
 	private String email;
 }

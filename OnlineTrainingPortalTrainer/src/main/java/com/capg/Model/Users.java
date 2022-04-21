@@ -1,12 +1,9 @@
 package com.capg.Model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import lombok.AllArgsConstructor;
@@ -21,10 +18,11 @@ public @Data class Users {
 	@Id
 
 	private String userID;
+	@NotEmpty(message="701")
 	@Column(unique=true)
 	@Pattern(regexp="^[a-zA-Z0-9]{3,}$",message="length must be 3 & No spl Char")  
 	private String userName;
-	
+	@NotEmpty(message="702")
 	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",message="Password format")
 	private String password;
 
