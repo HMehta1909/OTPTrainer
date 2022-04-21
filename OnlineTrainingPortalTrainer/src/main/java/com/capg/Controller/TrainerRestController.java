@@ -33,5 +33,10 @@ public class TrainerRestController {
 		java.util.Optional<Trainer> trainer = trainerService.getTrainerByName(name);
 		return new ResponseEntity<Trainer> (trainer.get(), HttpStatus.OK);
 	}
-
+	
+	@GetMapping("/getTrainerById/{id}")
+	public ResponseEntity<Trainer> getTrainerById(@PathVariable("id") String id){
+		java.util.Optional<Trainer> trainer = trainerService.getTrainerById(id);
+		return new ResponseEntity<Trainer> (trainer.get(), HttpStatus.OK);
+	}
 }

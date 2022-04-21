@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capg.Exception.KeyViolationException;
+import com.capg.Exception.ResourceNotFoundException;
 import com.capg.Model.Trainer;
 import com.capg.Model.Users;
 import com.capg.Repository.ITrainerRepo;
@@ -40,6 +41,15 @@ public class TrainerService {
 	public Optional<Trainer> getTrainerByName(String name) {
 //		System.out.print(trainerRepo.findByName(name));
 		return Optional.of(trainerRepo.findByName(name));
+	}
+
+	public Optional<Trainer>  getTrainerById(String id) {
+		try {
+			return Optional.of(trainerRepo.findByTrainerId(id));
+		}
+		catch(Exception e) {
+			throw new ResourceNotFoundException("NO SUCH ID");
+		}
 	}
 
 }

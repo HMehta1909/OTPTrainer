@@ -21,6 +21,13 @@ public class TrainerTest {
 	
 	@Autowired
 	private TrainerService service;
+	@Test
+	public void getTrainerById() {
+		String Id = "TRN-MIC-1";
+		when(repo.findByTrainerId(Id)).thenReturn(new Trainer("TRN-MIC-1",new Users("TRN-MIC-1","UserName01","Pass@word01"),"HIMANSHU","CLOUD","PUNE","90000000","h@gmail.com"));
+		Trainer trainer = new Trainer("TRN-MIC-1",new Users("TRN-MIC-1","UserName01","Pass@word01"),"HIMANSHU","CLOUD","PUNE","90000000","h@gmail.com");
+		assertEquals(trainer,service.getTrainerById(Id).get());
+	}
 	
 	@Test
 	public void getTrainerObj() {

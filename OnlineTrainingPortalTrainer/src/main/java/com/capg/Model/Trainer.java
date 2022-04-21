@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public @Data class Trainer {
 	@Id
-	private String TrainerId;
+	private String trainerId;
 	
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)

@@ -8,6 +8,8 @@ import com.capg.Model.Trainer;
 public interface ITrainerRepo extends JpaRepository<Trainer,Integer> {
 
 	Trainer findByName(String name);
+
+	Trainer findByTrainerId(String id);
 	 
 }
 
