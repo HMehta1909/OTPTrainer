@@ -29,6 +29,7 @@ public @Data class Trainer {
 	@JoinColumn(name = "userID")
 	private Users user;
 	
+	@Column(unique=true)
 	@NotEmpty
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String name;
