@@ -16,18 +16,13 @@ import lombok.NoArgsConstructor;
 public @Data class Users {
 
 	@Id
-
 	private String userID;
-	@NotEmpty(message="701")
-	@Column(unique=true)
-	@Pattern(regexp="^[a-zA-Z0-9]{3,}$",message="length must be 3 & No spl Char")  
+	@NotEmpty(message = "701")
+	@Column(unique = true)
+	@Pattern(regexp = "^[a-zA-Z0-9]{3,}$", message = "length must be 3 & No spl Char")
 	private String userName;
-	@NotEmpty(message="702")
-	@Pattern(regexp="^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$",message="Password format")
+	@NotEmpty(message = "702")
+	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$", message = "Password format")
 	private String password;
 
-//	@Transient
-//	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-//	@PrimaryKeyJoinColumn
-//	private Trainer trainer;
 }

@@ -1,0 +1,7 @@
+
+FROM openjdk:latest
+
+LABEL maintainer="javaguides.net"
+ADD ./build/libs/OnlineTrainingPortalTrainer-0.0.1-SNAPSHOT.jar otptrainer.jar
+
+ENTRYPOINT ["java", "-jar", "otptrainer.jar"]

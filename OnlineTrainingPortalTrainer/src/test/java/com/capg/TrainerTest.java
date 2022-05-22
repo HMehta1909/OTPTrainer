@@ -18,29 +18,37 @@ public class TrainerTest {
 
 	@MockBean
 	private ITrainerRepo repo;
-	
+
 	@Autowired
 	private TrainerService service;
+
 	@Test
 	public void getTrainerById() {
 		String Id = "TRN-MIC-1";
-		when(repo.findByTrainerId(Id)).thenReturn(new Trainer("TRN-MIC-1",new Users("TRN-MIC-1","UserName01","Pass@word01"),"HIMANSHU","CLOUD","PUNE","90000000","h@gmail.com"));
-		Trainer trainer = new Trainer("TRN-MIC-1",new Users("TRN-MIC-1","UserName01","Pass@word01"),"HIMANSHU","CLOUD","PUNE","90000000","h@gmail.com");
-		assertEquals(trainer,service.getTrainerById(Id).get());
+		when(repo.findByTrainerId(Id))
+		.thenReturn(new Trainer("TRN-MIC-1", new Users("TRN-MIC-1", "UserName01", "Pass@word01"), "HIMANSHU",
+				"CLOUD", "PUNE", "90000000", "h@gmail.com"));
+		Trainer trainer = new Trainer("TRN-MIC-1", new Users("TRN-MIC-1", "UserName01", "Pass@word01"), "HIMANSHU",
+				"CLOUD", "PUNE", "90000000", "h@gmail.com");
+		assertEquals(trainer, service.getTrainerById(Id).get());
 	}
-	
+
 	@Test
 	public void getTrainerObj() {
 		String name = "HIMANSHU";
-		when(repo.findByName(name)).thenReturn(new Trainer("TRN-CLO-01",new Users("TRN-CLO-01","UserName01","Pass@word01"),"HIMANSHU","CLOUD","PUNE","90000000","h@gmail.com"));
-		Trainer trainer = new Trainer("TRN-CLO-01",new Users("TRN-CLO-01","UserName01","Pass@word01"),"HIMANSHU","CLOUD","PUNE","90000000","h@gmail.com");
-		assertEquals(trainer,service.getTrainerByName(name).get());
-	} 
-	
+		when(repo.findByName(name))
+		.thenReturn(new Trainer("TRN-CLO-01", new Users("TRN-CLO-01", "UserName01", "Pass@word01"), "HIMANSHU",
+				"CLOUD", "PUNE", "90000000", "h@gmail.com"));
+		Trainer trainer = new Trainer("TRN-CLO-01", new Users("TRN-CLO-01", "UserName01", "Pass@word01"), "HIMANSHU",
+				"CLOUD", "PUNE", "90000000", "h@gmail.com");
+		assertEquals(trainer, service.getTrainerByName(name).get());
+	}
+
 	@Test
 	public void registerTrainer() {
-		Trainer trainer = new Trainer("TRN-CLO-01",new Users("TRN-CLO-01","UserName01","Pass@word01"),"HIMANSHU","CLOUD","PUNE","90000000","h@gmail.com");
+		Trainer trainer = new Trainer("TRN-CLO-01", new Users("TRN-CLO-01", "UserName01", "Pass@word01"), "HIMANSHU",
+				"CLOUD", "PUNE", "90000000", "h@gmail.com");
 		when(repo.save(trainer)).thenReturn(trainer);
-		assertEquals(trainer,service.registerTrainer(trainer));
+		assertEquals(trainer, service.registerTrainer(trainer));
 	}
 }

@@ -18,18 +18,16 @@ public class TrainerService {
 	ITrainerRepo trainerRepo;
 
 	public Object registerTrainer(Trainer trainerObj) {
-		// System.out.print(1);
 		trainerObj = generateUserId(trainerObj);
 		try {
-			//Get by email and throw exception on duplicate
+			// Get by email and throw exception on duplicate
 			return trainerRepo.save(trainerObj);
-		}
-		catch(Exception e) {
-			return new KeyViolationException ("RECORD EXISTED...");
+		} catch (Exception e) {
+			return new KeyViolationException("RECORD EXISTED...");
 		}
 	}
-	
-	//get by id add
+
+	// get by id add
 
 	public Trainer generateUserId(Trainer trainer) {
 		Users user = trainer.getUser();
@@ -39,17 +37,15 @@ public class TrainerService {
 	}
 
 	public Optional<Trainer> getTrainerByName(String name) {
-//		System.out.print(trainerRepo.findByName(name));
 		return Optional.of(trainerRepo.findByName(name));
 	}
 
-	public Optional<Trainer>  getTrainerById(String id) {
-		try {
-			return Optional.of(trainerRepo.findByTrainerId(id));
+		public Optional<Trainer> getTrainerById(String id) {
+			try {
+				return Optional.of(trainerRepo.findByTrainerId(id));
+			} catch (Exception e) {
+				throw new ResourceNotFoundException("NO SUCH ID");
+			}
 		}
-		catch(Exception e) {
-			throw new ResourceNotFoundException("NO SUCH ID");
-		}
-	}
 
 }

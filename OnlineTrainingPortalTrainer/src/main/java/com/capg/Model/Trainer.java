@@ -22,29 +22,29 @@ import lombok.NoArgsConstructor;
 public @Data class Trainer {
 	@Id
 	private String trainerId;
-	
+
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	@MapsId
 	@JoinColumn(name = "userID")
 	private Users user;
-	
-	@Column(unique=true)
-	@NotEmpty(message="704")
+
+	@Column(unique = true)
+	@NotEmpty(message = "704")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String name;
-	
-	@NotEmpty(message="705")
+
+	@NotEmpty(message = "705")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String technology;
-	@NotEmpty(message="706")
+	@NotEmpty(message = "706")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String location;
-	@NotEmpty(message="707")
+	@NotEmpty(message = "707")
 	@Size(min = 2, message = "MIN 2 char required.")
 	private String contact;
-	@Column(unique=true)
-	@NotEmpty(message="708")
-	@Email(message="553")
+	@Column(unique = true)
+	@NotEmpty(message = "708")
+	@Email(message = "553")
 	private String email;
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.Model.Trainer;
 import com.capg.Service.TrainerService;
-import com.google.common.base.Optional;
 
 @RestController
 @RequestMapping("Trainer")
@@ -25,18 +24,24 @@ public class TrainerRestController {
 	@PostMapping("/register")
 	public ResponseEntity<String> registerTrainer(@Validated @RequestBody Trainer trainer) {
 		Object trainerResponse = trainerService.registerTrainer(trainer);
-		return new ResponseEntity<String>(trainerResponse.toString(), HttpStatus.OK);
+		return new ResponseEntity<String>(trainerResponse.toString()+" Registered Sucessfully", HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/getTrainerObj/{name}")
 	public ResponseEntity<Trainer> getTrainerObj(@PathVariable("name") String name) {
 		java.util.Optional<Trainer> trainer = trainerService.getTrainerByName(name);
-		return new ResponseEntity<Trainer> (trainer.get(), HttpStatus.OK);
+		if (trainer.isPresent()) {
+			return new ResponseEntity<Trainer>(trainer.get(), HttpStatus.OK);
+		}
+		return null;
 	}
-	
+
 	@GetMapping("/getTrainerById/{id}")
-	public ResponseEntity<Trainer> getTrainerById(@PathVariable("id") String id){
+	public ResponseEntity<Trainer> getTrainerById(@PathVariable("id") String id) {
 		java.util.Optional<Trainer> trainer = trainerService.getTrainerById(id);
-		return new ResponseEntity<Trainer> (trainer.get(), HttpStatus.OK);
+		if (trainer.isPresent()) {
+			return new ResponseEntity<Trainer>(trainer.get(), HttpStatus.OK);
+		}
+		return null;
 	}
 }
